@@ -15,5 +15,5 @@ target
 
 # Remove Cargo.lock from gitignore if creating an executable, leave it for libraries
 # More information here http://doc.crates.io/guide.html#cargotoml-vs-cargolock
-Cargo.lock
+# Cargo.lock
 >>>>>>> 8a7cbd2f74593f7026486beef9ab9c7e976bc0c4
