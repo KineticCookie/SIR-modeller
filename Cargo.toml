@@ -1,0 +1,8 @@
+[package]
+name = "sir_modeller"
+version = "0.2.0"
+authors = ["Bulat Lutfullin <lb6557@gmail.com>"]
+
+[dependencies]
+docopt = "0.6.80"
+rustc-serialize = "0.3.19"
