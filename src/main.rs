@@ -15,11 +15,11 @@ Usage:
   sirs_solver --version
 
 Options:
-  -h --help         Show this screen.
-  --version         Show version.
-  --t-start=<b_value>       Begin of time [default: 0].
-  --t-end=<e_value>       End of time.
-  --t-delta=<d_value>       Delta time [default: 0.01].
+  -h --help                Show this screen.
+  --version                Show version.
+  --t-start=<b_value>      Begin of time [default: 0].
+  --t-end=<e_value>        End of time.
+  --t-delta=<d_value>      Delta time [default: 0.01].
   --s-zero=<s_value>       Number of suspecible at the beginning.
   --i-zero=<i_value>       Number of infected at the beginning.
   --r-zero=<r_value>       Number of recovered at the beginning.
@@ -28,7 +28,7 @@ Options:
   --r-rate=<r_rate_value>  Recovery rate of the disease.
 ";
 
-#[derive(Debug, RustcDecodable)]
+#[derive(RustcDecodable)]
 struct Args {
     flag_version: bool,
     flag_s_zero: Option<f32>,
@@ -42,7 +42,6 @@ struct Args {
     flag_r_rate: Option<f32>,
 }
 
-
 fn main() {
     let args: Args = Docopt::new(USAGE)
                             .and_then(|d| d.decode())
@@ -51,7 +50,7 @@ fn main() {
         println!("sirs_solver v 0.2.0");
         return;
     }
-    println!("{:?}", args);
+
     let infection_rate = args.flag_i_rate.unwrap_or_else(|| {panic!("infection_rate is not defined")});
     let recovery_rate = args.flag_r_rate.unwrap_or_else(|| {panic!("recovery_rate is not defined")});
     let imm_off_rate = args.flag_s_rate.unwrap_or_else(|| {panic!("susception_rate is not defined")});
@@ -89,7 +88,7 @@ fn main() {
     let i: Vec<f32> = e.get_data_vec("I").unwrap();
     let r: Vec<f32> = e.get_data_vec("R").unwrap();
 
-    println!("S,I,R");
+    println!("t,S,I,R");
     for iter in 0..s.len() {
         println!("{}, {}, {}, {}",iter, s[iter], i[iter], r[iter] );
     }

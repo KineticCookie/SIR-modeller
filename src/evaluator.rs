@@ -1,4 +1,5 @@
 //! The `evaluator` crate provides loop for solving ODE system
+
 use std::collections::HashMap;
 use std::boxed::Box;
 use std::string::String;
